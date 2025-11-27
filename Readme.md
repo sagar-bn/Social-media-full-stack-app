@@ -1,4 +1,4 @@
-# Social Media Full Stack App
+# Social Media Full Stack App | VoicesOfUs
 
 A full-stack social media platform where users can create accounts, post content, like, comment, and manage their profile.  
 Backend is built with **Java Spring Boot**, and the frontend uses **HTML, CSS, JavaScript** with REST API integration.
