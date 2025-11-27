@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Post | VoicesOfUs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/newpost.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Create New Post</h2>
+    <form id="createPostForm">
+      <input type="text" id="title" placeholder="Post Title" required />
+      <textarea id="content" placeholder="Post Content" rows="6" required></textarea>
+      <input type="text" id="featuredImageUrl" placeholder="Featured Image URL (optional)" />
+      <button type="submit">Create Post</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script>
+    const API_BASE = "http://localhost:8081/api";
+
+    function getToken() {
+      return localStorage.getItem("token");
+    }
+
+    async function apiRequest(endpoint, method = "GET", body = null) {
+      const headers = { "Content-Type": "application/json" };
+      const token = getToken();
+      if (token) headers["Authorization"] = `Bearer ${token}`;
+
+      const res = await fetch(API_BASE + endpoint, {
+        method,
+        headers,
+        body: body ? JSON.stringify(body) : undefined
+      });
+
+      const ct = res.headers.get("content-type") || "";
+      if (ct.includes("application/json")) {
+        const json = await res.json();
+        if (!res.ok) throw json;
+        return json;
+      } else {
+        const text = await res.text();
+        if (!res.ok) throw text || res.statusText;
+        return text;
+      }
+    }
+
+    document.getElementById("createPostForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      const token = getToken();
+      if (!token) {
+        alert("You must be logged in to create a post!");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const title = document.getElementById("title").value.trim();
+      const content = document.getElementById("content").value.trim();
+      const featuredImageUrl = document.getElementById("featuredImageUrl").value.trim();
+
+      try {
+        const post = await apiRequest("/posts", "POST", { title, content, featuredImageUrl });
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").textContent = "Post created successfully!";
+        // Optional: redirect to home page after creation
+        setTimeout(() => { window.location.href = "home.html"; }, 1500);
+      } catch (err) {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").textContent = "Failed to create post: " + (err.message || JSON.stringify(err));
+      }
+    });
+  </script>
+
+</body>
+
+</html>

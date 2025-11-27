@@ -1,0 +1,121 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Sagar Blog</title>
+  <link rel="stylesheet" href="loginRegister.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f8f9fa;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111;
+      color: white;
+      padding: 12px 60px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .username {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+    }
+
+    button {
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #b3121f;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Sagar Blog</div>
+    <div class="nav-right">
+      <span class="username">Hi, <span id="userName">User</span></span>
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" class="avatar" id="userAvatar">
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <script src="home.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | VoicesOfUs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">VoicesOfUs</div>
+    <div class="nav-right">
+      <span class="username">Hi, <span id="userName">Voices</span></span>
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" class="avatar" id="userAvatar">
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to VoicesOfUs</h1>
+    <p>Discover amazing stories, insights, and ideas from our community of writers</p>
+    <button class="create-btn" id="createPostBtn">Create New Post</button>
+  </section>
+
+  <div class="container">
+    <h2 class="section-title">Latest Posts</h2>
+    <div id="postsContainer">
+      <div class="loading">Loading posts...</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 VoicesOfUs. All rights reserved.</p>
+  </footer>
+
+ <script src="./js/home.js"></script>
+</body>
+
+</html>
